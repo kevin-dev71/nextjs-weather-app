@@ -1,5 +1,6 @@
 module.exports = {
-  "**/*.(ts|tsx|js|jsx)": () => {
-    return ["npm run lint", "npm run format:fix"];
-  },
+  // Run type-check on changes to TypeScript files
+  "**/*.ts?(x)": () => "yarn type-check",
+  // Run ESLint on changes to JavaScript/TypeScript files
+  "**/*.(ts|js)?(x)": (filenames) => `yarn lint . ${filenames.join(" ")}`,
 };

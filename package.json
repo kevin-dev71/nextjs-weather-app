@@ -9,7 +9,9 @@
     "lint": "next lint --fix",
     "format:check": "prettier --check **/*.{ts,tsx}",
     "format:fix": "prettier --write **/*.{ts,tsx}",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "next": "12.3.0",
