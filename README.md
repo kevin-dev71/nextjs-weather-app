@@ -38,3 +38,12 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Docker Production Build
+
+```bash
+# Run
+docker-compose -f docker-compose.production.yml --env-file .env.local up --build
+```
+
+Open http://localhost:3000 with your browser to see the result.

@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  app:
+    image: weather-challenge-app
+    build:
+      dockerfile: Dockerfile.production
+      context: .
+    ports:
+      - 3000:3000
+    env_file:
+      - .env.local
+    environment:
+      OPENWEATHER_API_BASE_URL: ${OPENWEATHER_API_BASE_URL}
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY}
+      DEFAULT_CITY: ${DEFAULT_CITY}
