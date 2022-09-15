@@ -4,12 +4,10 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 describe("Home", () => {
-  it("renders a heading", () => {
+  it("renders HOMEPAGE text", () => {
     render(<Home />);
 
-    const heading = screen.getByRole("heading", {
-      name: /welcome to next\.js!/i,
-    });
+    const heading = screen.getByText("HOMEPAGE");
 
     expect(heading).toBeInTheDocument();
   });
