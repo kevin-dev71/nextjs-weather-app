@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+[![Deployment Pipeline](https://github.com/kevin-dev71/nextjs-weather-app/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/kevin-dev71/nextjs-weather-app/actions/workflows/pipeline.yml)
+
 ## Getting Started
 
 You need to be using:
