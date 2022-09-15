@@ -101,6 +101,7 @@
     {
       "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
       "extends": ["plugin:testing-library/react"]
-    }
+    },
+    { "files": ["src/**/*.slice.ts"], "rules": { "no-param-reassign": "off" } }
   ]
 }
