@@ -2,15 +2,24 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-- Install dependencies
+You need to be using:
 
-  ```bash
-  yarn
-  # or
-  npm install
-  ```
+- [Nodejs v16 or higher](https://nodejs.org/es/download/)
+- [Git](https://git-scm.com/downloads)
 
-- run the development server:
+Clone the repository & install dependencies:
+
+```bash
+git clone https://github.com/kevin-dev71/nextjs-weather-app.git
+
+cd nextjs-weather-app
+
+npm install
+# or
+yarn
+```
+
+Run the development server:
 
 ```bash
 npm run dev
