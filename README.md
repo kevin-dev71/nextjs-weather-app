@@ -19,6 +19,16 @@ npm install
 yarn
 ```
 
+Rename `.env.example` to `.env.local` and add `OPENWEATHER_API_KEY`
+
+```bash
+OPENWEATHER_API_BASE_URL=http://api.openweathermap.org
+OPENWEATHER_API_KEY=
+DEFAULT_CITY="santiago de chile"
+```
+
+if you dont have an Open weather API KEY, get one in this [link](https://home.openweathermap.org/api_keys)
+
 Run the development server:
 
 ```bash
