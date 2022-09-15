@@ -1,0 +1,28 @@
+name: Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Clone Repo
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: Install dependencies
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - name: Lint
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: lint # will run `yarn lint` command
+
