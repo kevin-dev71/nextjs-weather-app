@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCity as setCityStore } from "@/src/redux/slices/city.slice";
 import { RootState } from "@/src/redux/store";
 
-const useCity = () => {
+const useCityStore = () => {
   const dispatch = useDispatch();
 
   const city = useSelector((state: RootState) => {
@@ -17,4 +17,4 @@ const useCity = () => {
   return { city, setCity };
 };
 
-export default useCity;
+export default useCityStore;
