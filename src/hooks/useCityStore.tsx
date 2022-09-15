@@ -1,20 +1,35 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setCity as setCityStore } from "@/src/redux/slices/city.slice";
-import { RootState } from "@/src/redux/store";
+import {
+  asyncFetchCityGeo,
+  CITY_STATE_STATUS,
+  getCityName,
+  getCityStoreStatus,
+  getGeoInfo,
+  setCity as setCityStore,
+} from "@/src/redux/slices/city.slice";
+
+import { AppDispatch } from "../redux/store";
 
 const useCityStore = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const city = useSelector((state: RootState) => {
-    return state.city.value;
-  });
+  const cityName = useSelector(getCityName);
+  const cityStoreStatus = useSelector(getCityStoreStatus);
+  const geoInfo = useSelector(getGeoInfo);
 
   const setCity = (newCityValue: string) => {
     dispatch(setCityStore(newCityValue));
   };
 
-  return { city, setCity };
+  useEffect(() => {
+    if (cityStoreStatus === CITY_STATE_STATUS.IDLE) {
+      dispatch(asyncFetchCityGeo(cityName));
+    }
+  }, [cityStoreStatus, dispatch, cityName]);
+
+  return { cityName, setCity, geoInfo };
 };
 
 export default useCityStore;
