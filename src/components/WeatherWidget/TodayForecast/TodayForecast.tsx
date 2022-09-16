@@ -4,6 +4,7 @@ import useCityStore from "@/src/hooks/useCityStore";
 import useLocale, { LocalesObjKey, OPENWEATHER_LANG_MAP } from "@/src/hooks/useLocale";
 import { fetchWeatherByCityName } from "@/src/services/city.service";
 import { WeatherByCityApiResponse } from "@/src/ts/interfaces";
+import { getDateFromDateTime } from "@/src/utils/getDateFromDatetime";
 import { getOpenWeatherIconUrlByIconId } from "@/src/utils/getOpenWeatherIconUrlByIconId";
 
 import styles from "./TodayForecast.module.scss";
@@ -29,6 +30,8 @@ const TodayForecast = () => {
   // console.log("====");
   // console.log(city);
 
+  const { weekday, monthName, day } = getDateFromDateTime(dt);
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.forecast__header}>
@@ -37,7 +40,7 @@ const TodayForecast = () => {
         </div>
         <div className={styles["forecast__header-body"]}>
           <p>{t("today")}</p>
-          <p>{dt}</p>
+          <p>{`${weekday}, ${day} ${monthName}`}</p>
         </div>
       </div>
       <div className={styles.forecast__body}>
