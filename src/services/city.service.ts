@@ -1,8 +1,45 @@
-import { GEO_URL } from "@/src/config/routes";
+import { FORECAST5_URL, GEO_URL, WEATHER_URL } from "@/src/config/routes";
 import { apiAxiosInstance } from "@/src/lib/axios/apiAxiosInstance";
-import type { GeocodingApiResponse } from "@/src/ts/interfaces/GeocodingApiResponse.interfaces";
+import { OpenWeatherParams } from "@/src/ts/enums/OpenWeatherParams";
+import type {
+  Forecast5ApiResponse,
+  GeocodingApiResponse,
+  WeatherByCityApiResponse,
+} from "@/src/ts/interfaces";
 
 export const fetchCityGeo = async (city: string) => {
   const { data } = await apiAxiosInstance.get(`${GEO_URL}?city=${city}`);
   return data as GeocodingApiResponse[];
+};
+
+export const fetchWeatherByCityName = async ({
+  city,
+  lang,
+  units = OpenWeatherParams.METRIC,
+}: {
+  city: string;
+  units?: OpenWeatherParams;
+  lang: string;
+}) => {
+  const { data } = await apiAxiosInstance.get(
+    `${WEATHER_URL}?city=${city}&units=${units}&lang=${lang}`
+  );
+  return data as WeatherByCityApiResponse;
+};
+
+export const fetch5daysForecast = async ({
+  lat,
+  lon,
+  lang,
+  units = OpenWeatherParams.METRIC,
+}: {
+  lat: number;
+  lon: number;
+  lang: string;
+  units?: OpenWeatherParams;
+}) => {
+  const { data } = await apiAxiosInstance.get(
+    `${FORECAST5_URL}?lat=${lat}&lon=${lon}&units=${units}&lang=${lang}`
+  );
+  return data as Forecast5ApiResponse;
 };

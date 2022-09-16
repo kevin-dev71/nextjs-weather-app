@@ -12,4 +12,5 @@ const IconInput = ({ ...delegatedProps }) => {
     </label>
   );
 };
+
 export default IconInput;
