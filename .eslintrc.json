@@ -54,6 +54,14 @@
         }
       }
     ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
     "@next/next/no-img-element": "off",
     "no-else-return": "error",
     "react/jsx-props-no-spreading": "off",
