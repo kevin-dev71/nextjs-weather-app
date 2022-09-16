@@ -3,12 +3,28 @@
     "search-placeholder": "Search a city...",
     "weather-forecast-title": "Weather Forecast",
     "choose-language": "Language",
-    "today": "Today"
+    "today": "Today",
+    "feel-like": "Feels Like",
+    "temp-min": "Temp Min.",
+    "temp-max": "Temp Max.",
+    "weather": "Weather",
+    "wind-speed": "Wind Speed",
+    "sunset": "Sunset",
+    "sunrise": "Sunrise",
+    "wind-speed-unit": "m/h"
   },
   "es-ES": {
     "search-placeholder": "Busca una ciudad...",
     "weather-forecast-title": "Pronóstico del Clima",
     "choose-language": "Idioma",
-    "today": "Hoy"
+    "today": "Hoy",
+    "feel-like": "Sensación Térmica",
+    "temp-min": "Temp Min.",
+    "temp-max": "Temp Max.",
+    "weather": "Clima",
+    "wind-speed": "Velocidad Viento",
+    "sunset": "Puesta del sol",
+    "sunrise": "Amanecer",
+    "wind-speed-unit": "km/h"
   }
 }

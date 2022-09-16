@@ -64,6 +64,15 @@
     ],
     "@next/next/no-img-element": "off",
     "no-else-return": "error",
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": false,
+        "variables": false,
+        "allowNamedExports": false
+      }
+    ],
     "react/jsx-props-no-spreading": "off",
     "require-jsdoc": "off",
     "react/require-default-props": "off",
