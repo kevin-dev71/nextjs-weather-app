@@ -20,7 +20,7 @@
     "testing-library/no-debugging-utils": "warn",
     "testing-library/no-dom-import": "off",
     "import/prefer-default-export": "off",
-    "arrow-body-style": ["error", "always"],
+    "arrow-body-style": 0,
     "import/extensions": [
       "error",
       "ignorePackages",

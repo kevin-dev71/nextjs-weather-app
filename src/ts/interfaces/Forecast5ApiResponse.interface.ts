@@ -14,7 +14,7 @@ export interface List {
   main: MainClass;
   pop: number;
   rain?: Rain;
-  sys: Sys;
+  sys: Syst;
   visibility: number;
   weather: Weather[];
   wind: Wind;
@@ -40,7 +40,7 @@ export interface Rain {
   "3h": number;
 }
 
-export interface Sys {
+export interface Syst {
   pod: Pod;
 }
 
@@ -64,7 +64,7 @@ export enum MainEnum {
 
 export interface Wind {
   deg: number;
-  gust: number;
+  gust?: number;
   speed: number;
 }
 
