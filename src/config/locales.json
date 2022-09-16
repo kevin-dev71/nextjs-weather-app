@@ -1,8 +1,14 @@
 {
   "en-US": {
-    "search-placeholder": "Search a city..."
+    "search-placeholder": "Search a city...",
+    "weather-forecast-title": "Weather Forecast",
+    "choose-language": "Language",
+    "today": "Today"
   },
   "es-ES": {
-    "search-placeholder": "Busca una ciudad..."
+    "search-placeholder": "Busca una ciudad...",
+    "weather-forecast-title": "Pronóstico del Clima",
+    "choose-language": "Idioma",
+    "today": "Hoy"
   }
 }

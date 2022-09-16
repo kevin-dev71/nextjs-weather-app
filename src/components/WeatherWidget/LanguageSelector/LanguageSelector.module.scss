@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
+
+  span:first-of-type {
+    margin-right: 12px;
+  }
+
+  .active {
+    font-weight: var(--font-bold);
+  }
+}
