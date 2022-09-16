@@ -5,7 +5,7 @@ import { AxiosError } from "axios";
 import { OPENWEATHER_API_KEY } from "@/src/config/constants";
 import { openWeatherAxiosInstance } from "@/src/lib/axios/openWeatherAxiosInstance";
 import { OpenWeatherParams } from "@/src/ts/enums/OpenWeatherParams";
-import { GeocodingApiResponse } from "@/src/ts/interfaces/GeocodingApiResponse.interfaces";
+import { Forecast5ApiResponse } from "@/src/ts/interfaces";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await NextCors(req, res, {
@@ -15,11 +15,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const {
-      query: { lat, lon, units = OpenWeatherParams.METRIC },
+      query: { lat, lon, units = OpenWeatherParams.METRIC, lang = "es" },
     } = req;
     // TODO: Check if is valid `units`
-    const { data }: { data: GeocodingApiResponse[] } = await openWeatherAxiosInstance.get(
-      `/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${OPENWEATHER_API_KEY}`
+    const { data }: { data: Forecast5ApiResponse } = await openWeatherAxiosInstance.get(
+      `/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&lang=${lang}&appid=${OPENWEATHER_API_KEY}`
     );
 
     return res.status(200).json(data);
