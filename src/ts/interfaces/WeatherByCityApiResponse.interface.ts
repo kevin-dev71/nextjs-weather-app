@@ -1,11 +1,4 @@
-export interface Clouds {
-  all: number;
-}
-
-export interface Coord {
-  lat: number;
-  lon: number;
-}
+import { Clouds, Coord, Weather, Wind } from "./Forecast5ApiResponse.interface";
 
 export interface Main {
   feels_like: number;
@@ -22,18 +15,6 @@ export interface Sys {
   sunrise: number;
   sunset: number;
   type: number;
-}
-
-export interface Weather {
-  description: string;
-  icon: string;
-  id: number;
-  main: string;
-}
-
-export interface Wind {
-  deg: number;
-  speed: number;
 }
 
 export interface WeatherByCityApiResponse {

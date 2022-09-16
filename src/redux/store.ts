@@ -1,11 +1,26 @@
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 import cityReducer from "@/src/redux/slices/city.slice";
-import { configureStore } from "@reduxjs/toolkit";
+import favoriteCityReducer from "@/src/redux/slices/favoriteCity.slice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+  whitelist: ["favoriteCities"],
+};
+
+const reducer = combineReducers({
+  city: cityReducer,
+  favoriteCities: favoriteCityReducer,
+});
+const persistedReducer = persistReducer(persistConfig, reducer);
 
 export const store = configureStore({
-  reducer: {
-    city: cityReducer,
-    // more reducers from slices here
-  },
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

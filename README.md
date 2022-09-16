@@ -58,3 +58,7 @@ docker-compose -f docker-compose.production.yml --env-file .env.local up --build
 ```
 
 Open http://localhost:3000 with your browser to see the result.
+
+## Design Inspiration
+
+[dribble](https://dribbble.com/shots/7177589-Dashboard-Weather-App/attachments/178655?mode=media)

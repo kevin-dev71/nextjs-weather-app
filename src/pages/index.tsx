@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 
-import { HomePage } from "@/src/components/HomePage";
+import { WeatherWidget } from "@/src/components/WeatherWidget";
 
 const Home: NextPage = () => {
-  return <HomePage />;
+  return <WeatherWidget />;
 };
 
 export default Home;
