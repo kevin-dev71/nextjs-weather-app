@@ -57,6 +57,10 @@ export const getCityName = (state: { city: CityState }) => {
   return state.city.name;
 };
 
+export const getCity = (state: { city: CityState }) => {
+  return state.city;
+};
+
 export const getGeoInfo = (state: { city: CityState }) => {
   return state.city.geoInfo;
 };
