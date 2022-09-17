@@ -17,6 +17,7 @@ export const fetchCityGeo = async (
   return data as GeocodingApiResponse[];
 };
 
+// TODO: js doc will deprecated soon
 export const fetchWeatherByCityName = async ({
   city,
   lang,
@@ -28,6 +29,23 @@ export const fetchWeatherByCityName = async ({
 }) => {
   const { data } = await apiAxiosInstance.get(
     `${WEATHER_URL}?city=${city}&units=${units}&lang=${lang}`
+  );
+  return data as WeatherByCityApiResponse;
+};
+
+export const fetchWeatherByCoords = async ({
+  lon,
+  lat,
+  units = OpenWeatherParams.METRIC,
+  lang,
+}: {
+  lon: number | string;
+  lat: number | string;
+  units?: OpenWeatherParams;
+  lang: string;
+}) => {
+  const { data } = await apiAxiosInstance.get(
+    `${WEATHER_URL}/coords/?lon=${lon}&lat=${lat}&units=${units}&lang=${lang}`
   );
   return data as WeatherByCityApiResponse;
 };
