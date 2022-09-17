@@ -1,29 +1,45 @@
 import { useEffect, useState } from "react";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import useCityStore from "@/src/hooks/useCityStore";
 import useLocale, { LocalesObjKey, OPENWEATHER_LANG_MAP } from "@/src/hooks/useLocale";
-import { fetchWeatherByCityName } from "@/src/services/city.service";
-import { WeatherByCityApiResponse } from "@/src/ts/interfaces";
+import { fetchWeatherByCoords } from "@/src/services/city.service";
+import { GeocodingApiResponse, WeatherByCityApiResponse } from "@/src/ts/interfaces";
 import { getDateFromDateTime } from "@/src/utils/getDateFromDatetime";
 import { getOpenWeatherIconUrlByIconId } from "@/src/utils/getOpenWeatherIconUrlByIconId";
 
 import styles from "./TodayForecast.module.scss";
 
 const TodayForecast = () => {
-  const { cityName, city } = useCityStore();
+  const { city, handleFavorite, isInfavorite } = useCityStore();
   const { locale, t } = useLocale();
   // Local states
   const [weatherStats, setWeatherStats] = useState<WeatherByCityApiResponse | null>(null);
 
   const lang = OPENWEATHER_LANG_MAP[locale as LocalesObjKey];
 
+  const { hour: timeNow } = getDateFromDateTime(Math.floor(Date.now() / 1000));
+
   useEffect(() => {
-    fetchWeatherByCityName({ city: cityName, lang }).then((res) => {
+    // Will deprecated soon and not accurated fetching by name
+    // better use https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}&lang={lang}
+    // fetchWeatherByCityName({ city: cityName, lang }).then((res) => {
+    //   setWeatherStats(res);
+    // });
+    if (!city?.geoInfo) return;
+    const { lat, lon } = city.geoInfo;
+    fetchWeatherByCoords({ lat, lon, lang }).then((res) => {
       setWeatherStats(res);
     });
-  }, [cityName, lang]);
+  }, [city.geoInfo, lang]);
 
   if (!weatherStats) return null;
+
+  const handleFavoriteClick = (citySelection: GeocodingApiResponse | null) => () => {
+    // CODE SMELL
+    if (!citySelection) return;
+    handleFavorite(citySelection);
+  };
 
   // TODO: adapter for this data
   const { weather, dt, main, wind, sys } = weatherStats;
@@ -31,11 +47,8 @@ const TodayForecast = () => {
   const { hour: sunsetHour } = getDateFromDateTime(sys.sunset);
   const { hour: sunriseHour } = getDateFromDateTime(sys.sunrise);
 
-  // console.log(weatherStats);
-  // console.log("====");
-  // console.log(city);
-
-  const footerItemsArr = [
+  // RENDERS
+  const weatherStatsArr = [
     {
       label: t("feel-like"),
       value: `${Math.trunc(main.feels_like)} °C`,
@@ -66,9 +79,15 @@ const TodayForecast = () => {
     },
   ];
 
-  const footerItemstorender = footerItemsArr.map(({ label, value }) => (
+  const weatherStatsTorender = weatherStatsArr.map(({ label, value }) => (
     <ForecastFooterItem key={label} {...{ label, value }} />
   ));
+
+  const favoriteIconToRender = isInfavorite(city.geoInfo) ? (
+    <AiFillStar onClick={handleFavoriteClick(city?.geoInfo)} />
+  ) : (
+    <AiOutlineStar onClick={handleFavoriteClick(city?.geoInfo)} />
+  );
 
   return (
     <section className={styles.wrapper}>
@@ -90,11 +109,15 @@ const TodayForecast = () => {
             <span className={styles.symbol}>°C</span>
           </div>
           <div className={styles["forecast__body-city"]}>
-            <span>{`${city.geoInfo?.name}, ${city.geoInfo?.country}`}</span>
+            <div className={styles["forecast__body-city--name"]}>
+              <span>{`${city.geoInfo?.name}, ${city.geoInfo?.country}`}</span>
+              {favoriteIconToRender}
+            </div>
+            <span>{timeNow}</span>
           </div>
         </div>
       </div>
-      <div className={styles.forecast__footer}>{footerItemstorender}</div>
+      <div className={styles.forecast__footer}>{weatherStatsTorender}</div>
     </section>
   );
 };

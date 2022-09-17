@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 24px;
+  gap: 14px;
   width: 100%;
 
   .forecast__content {
@@ -47,11 +47,12 @@
     .forecast__body {
       display: flex;
       flex-direction: column;
-      gap: 8px;
       width: fit-content;
       margin: 0 auto;
 
       &-temp {
+        margin: 0 auto;
+
         .temp {
           font-size: calc(120rem / 16);
           line-height: calc(120rem / 16);
@@ -64,8 +65,32 @@
       }
 
       &-city {
+        display: flex;
+        flex-direction: column;
+        font-size: calc(32rem / 16);
         color: var(--text-color-secondary);
         margin: 0 auto;
+
+        &--name {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          flex-wrap: nowrap;
+
+          span {
+            white-space: nowrap;
+          }
+
+          svg {
+            fill: goldenrod;
+            cursor: pointer;
+          }
+        }
+
+        span:last-child {
+          font-size: calc(12rem / 16);
+          text-align: center;
+        }
       }
     }
   }
