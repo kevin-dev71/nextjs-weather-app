@@ -22,7 +22,10 @@ const initialState: CityState = {
   geoInfo: null,
 };
 
-export const asyncFetchCityGeo = createAsyncThunk("thunk/city/geo", fetchCityGeo);
+export const asyncFetchCityGeo = createAsyncThunk("thunk/city/geo", async (city: string) => {
+  const response = await fetchCityGeo(city);
+  return response;
+});
 
 export const citySlice = createSlice({
   name: "city",

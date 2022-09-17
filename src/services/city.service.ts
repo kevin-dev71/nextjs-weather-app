@@ -7,8 +7,13 @@ import type {
   WeatherByCityApiResponse,
 } from "@/src/ts/interfaces";
 
-export const fetchCityGeo = async (city: string) => {
-  const { data } = await apiAxiosInstance.get(`${GEO_URL}?city=${city}`);
+export const fetchCityGeo = async (
+  city: string,
+  controller: AbortController = new AbortController()
+) => {
+  const { data } = await apiAxiosInstance.get(`${GEO_URL}?city=${city}`, {
+    signal: controller.signal,
+  });
   return data as GeocodingApiResponse[];
 };
 

@@ -11,7 +11,9 @@
     "wind-speed": "Wind Speed",
     "sunset": "Sunset",
     "sunrise": "Sunrise",
-    "wind-speed-unit": "m/s"
+    "wind-speed-unit": "m/s",
+    "no-results": "No results found",
+    "searching": "Searching"
   },
   "es-ES": {
     "search-placeholder": "Busca una ciudad...",
@@ -25,6 +27,8 @@
     "wind-speed": "Velocidad Viento",
     "sunset": "Puesta del sol",
     "sunrise": "Amanecer",
-    "wind-speed-unit": "m/s"
+    "wind-speed-unit": "m/s",
+    "no-results": "No se encontraron resultados",
+    "searching": "Buscando"
   }
 }
