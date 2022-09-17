@@ -40,6 +40,7 @@ export const citySlice = createSlice({
     },
     setGeoInfo: (state, action: PayloadAction<GeocodingApiResponse>) => {
       state.geoInfo = action.payload;
+      state.name = action.payload.name;
     },
   },
   extraReducers(builder) {
