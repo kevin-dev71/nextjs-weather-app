@@ -8,7 +8,7 @@ const nextConfig = {
     defaultLocale: "es-ES",
   },
   images: {
-    domains: ["openweathermap.org"],
+    domains: ["openweathermap.org", "source.unsplash.com"],
   },
 };
 

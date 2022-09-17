@@ -7,12 +7,17 @@ import { fetchCityGeo } from "@/src/services/city.service";
 import { GeocodingApiResponse } from "@/src/ts/interfaces";
 import { debounce } from "@/src/utils/debounce";
 
-const useSearchBarWithSuggestion = (scrollRef: any) => {
+const useSearchBarWithSuggestion = (
+  scrollRef: any,
+  { onSubmit }: { onSubmit: (arg: GeocodingApiResponse) => () => void }
+) => {
   const [searchParam, setSearchParam] = useState("");
   const [isFetchingSearchResults, setIsFetchingSearchResults] = useState(true);
   const [searchResults, setSearchResults] = useState<GeocodingApiResponse[]>([]);
+
   const arrowUpPressed = useKeyPress("ArrowUp");
   const arrowDownPressed = useKeyPress("ArrowDown");
+  const enterPressed = useKeyPress("Enter");
   const [selectedSuggestionIndex, dispatchSelectedSuggestionIndex] = useReducer(
     suggestionIndexReducer,
     0
@@ -38,6 +43,8 @@ const useSearchBarWithSuggestion = (scrollRef: any) => {
     dispatchSelectedSuggestionIndex({ type: "reset", payload: searchResults.length });
   };
 
+  // fetch Results Suggestion
+  // TODO: move this out for inversion of dependency, inject fetch result suggestion service
   useEffect(() => {
     if (!searchParam) return;
 
@@ -63,6 +70,7 @@ const useSearchBarWithSuggestion = (scrollRef: any) => {
     };
   }, [searchParam]);
 
+  // Handle arrow up and down for accesibility
   useEffect(() => {
     scrollRef?.current?.scrollIntoView(false);
     if (arrowUpPressed) {
@@ -73,6 +81,15 @@ const useSearchBarWithSuggestion = (scrollRef: any) => {
     }
   }, [arrowUpPressed, arrowDownPressed, scrollRef, searchResults.length]);
 
+  // handle Enter Key to set selected Result item
+  useEffect(() => {
+    if (!enterPressed) return;
+
+    if (searchResults[selectedSuggestionIndex]) {
+      onSubmit(searchResults[selectedSuggestionIndex])();
+    }
+  }, [enterPressed, searchResults, selectedSuggestionIndex, onSubmit]);
+
   return {
     searchParam,
     isFetchingSearchResults,
@@ -80,6 +97,7 @@ const useSearchBarWithSuggestion = (scrollRef: any) => {
     handleOnBlur,
     handleInputChange,
     selectedSuggestionIndex,
+    enterPressed,
   };
 };
 

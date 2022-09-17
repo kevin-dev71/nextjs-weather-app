@@ -7,3 +7,4 @@ export const DEFAULT_CITY = process.env.NEXT_PUBLIC_DEFAULT_CITY || "santiago de
 
 export const API_URL = "/api/v1";
 export const OPENWEATHER_IMG_URL = "http://openweathermap.org/img/wn";
+export const RANDOM_PLACES_IMG_URL = "https://source.unsplash.com/random/200x200/?city";

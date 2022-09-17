@@ -28,6 +28,16 @@
       border-radius: 3px;
       cursor: default;
 
+      .city__name {
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .city__state {
+        font-size: calc(11rem / 16);
+        font-weight: var(--font-medium);
+        color: var(--text-color-quaternary);
+      }
+
       &:hover {
         background-color: var(--bg-color);
       }

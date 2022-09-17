@@ -6,7 +6,7 @@
   width: 100%;
 
   .forecast__content {
-    width: 50%;
+    width: fit-content;
     margin: 0 auto;
 
     .forecast__header {
@@ -76,10 +76,6 @@
           align-items: center;
           gap: 4px;
           flex-wrap: nowrap;
-
-          span {
-            white-space: nowrap;
-          }
 
           svg {
             fill: goldenrod;

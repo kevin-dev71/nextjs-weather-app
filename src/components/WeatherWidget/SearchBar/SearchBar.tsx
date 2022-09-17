@@ -33,12 +33,19 @@ const SearchBar = () => {
     handleInputChange,
     searchParam,
     selectedSuggestionIndex,
-  } = useSearchBarWithSuggestion(scrollRef);
+  } = useSearchBarWithSuggestion(scrollRef, { onSubmit: handleSelection });
 
   // this is to handle click outside the searchbox, so can close the suggestion box
   useOutsideAlerter(searchBoxRef, () => handleOnBlur());
 
   const isEmptySearchResults = searchResults.length <= 0 && !isFetchingSearchResults;
+
+  function handleSelection(geoCity: GeocodingApiResponse) {
+    return () => {
+      setGeoInfo(geoCity);
+      handleOnBlur();
+    };
+  }
 
   // RENDERS
   const suggestionResultsToRender = searchResults.map((searchSuggestion, index) => {
@@ -48,11 +55,6 @@ const SearchBar = () => {
       styles["searchbox__suggestion-item"],
       isSelected ? styles.selected : ""
     );
-
-    const handleSelection = (geoCity: GeocodingApiResponse) => () => {
-      setGeoInfo(geoCity);
-      handleOnBlur();
-    };
 
     return (
       <div
@@ -64,7 +66,8 @@ const SearchBar = () => {
         tabIndex={0}
         onKeyPress={() => {}}
       >
-        {`${name ?? ""}, ${state ?? ""}, ${country ?? ""}`}
+        <div className={styles.city__name}>{`${name ?? ""}`}</div>
+        <div className={styles.city__state}>{` ${state ?? name ?? ""}, ${country ?? ""}`}</div>
       </div>
     );
   });
