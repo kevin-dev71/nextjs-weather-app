@@ -3,11 +3,11 @@ export interface Forecast5ApiResponse {
   city: City;
   cnt: number;
   cod: string;
-  list: List[];
+  list: ForecastListItem[];
   message: number;
 }
 
-export interface List {
+export interface ForecastListItem {
   clouds: Clouds;
   dt: number;
   dt_txt: Date;

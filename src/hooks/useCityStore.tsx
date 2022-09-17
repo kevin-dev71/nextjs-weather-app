@@ -12,7 +12,7 @@ import {
 } from "@/src/redux/slices/city.slice";
 import { getFavoriteCities } from "@/src/redux/slices/favoriteCity.slice";
 
-import { AppDispatch } from "../redux/store";
+import type { AppDispatch } from "../redux/store";
 
 const useCityStore = () => {
   const dispatch = useDispatch<AppDispatch>();
