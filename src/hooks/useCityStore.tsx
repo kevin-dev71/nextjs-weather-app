@@ -8,9 +8,11 @@ import {
   getCityName,
   getCityStoreStatus,
   getGeoInfo,
-  setCity as setCityStore,
+  setCityName as setCityStore,
+  setGeoInfo as setGeoInfoStore,
 } from "@/src/redux/slices/city.slice";
 import { getFavoriteCities } from "@/src/redux/slices/favoriteCity.slice";
+import type { GeocodingApiResponse } from "@/src/ts/interfaces";
 
 import type { AppDispatch } from "../redux/store";
 
@@ -27,13 +29,17 @@ const useCityStore = () => {
     dispatch(setCityStore(newCityValue));
   };
 
+  const setGeoInfo = (newCityValue: GeocodingApiResponse) => {
+    dispatch(setGeoInfoStore(newCityValue));
+  };
+
   useEffect(() => {
     if (cityStoreStatus === CITY_STATE_STATUS.IDLE) {
       dispatch(asyncFetchCityGeo(cityName));
     }
   }, [cityStoreStatus, dispatch, cityName]);
 
-  return { cityName, setCity, geoInfo, favoriteCities, city };
+  return { cityName, setCity, geoInfo, favoriteCities, city, setGeoInfo };
 };
 
 export default useCityStore;

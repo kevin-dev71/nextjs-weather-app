@@ -35,8 +35,11 @@ export const citySlice = createSlice({
     // doesn't actually mutate the state because it uses the Immer library,
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
-    setCity: (state, action: PayloadAction<string>) => {
+    setCityName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
+    },
+    setGeoInfo: (state, action: PayloadAction<GeocodingApiResponse>) => {
+      state.geoInfo = action.payload;
     },
   },
   extraReducers(builder) {
@@ -73,6 +76,6 @@ export const getCityStoreStatus = (state: { city: CityState }) => {
 };
 
 // Action creators are generated for each case reducer function
-export const { setCity } = citySlice.actions;
+export const { setCityName, setGeoInfo } = citySlice.actions;
 
 export default citySlice.reducer;

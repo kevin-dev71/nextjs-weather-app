@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 
+import useCityStore from "@/src/hooks/useCityStore";
 import useLocale from "@/src/hooks/useLocale";
 import useOutsideAlerter from "@/src/hooks/useOutsideAlerter";
+import type { GeocodingApiResponse } from "@/src/ts/interfaces";
 import { classnames } from "@/src/utils/classnames";
 
 import useSearchBarWithSuggestion from "./hook/useSearchBarWithSuggestion";
@@ -23,6 +25,7 @@ const SearchBar = () => {
   const searchBoxRef = useRef(null);
   const scrollRef = useRef(null);
   const { t } = useLocale();
+  const { setGeoInfo } = useCityStore();
   const {
     handleOnBlur,
     searchResults,
@@ -46,11 +49,20 @@ const SearchBar = () => {
       isSelected ? styles.selected : ""
     );
 
+    const handleSelection = (geoCity: GeocodingApiResponse) => () => {
+      setGeoInfo(geoCity);
+      handleOnBlur();
+    };
+
     return (
       <div
         key={lat + lon}
         className={compundStyle}
         ref={index === selectedSuggestionIndex ? scrollRef : null}
+        onClick={handleSelection(searchSuggestion)}
+        role="button"
+        tabIndex={0}
+        onKeyPress={() => {}}
       >
         {`${name ?? ""}, ${state ?? ""}, ${country ?? ""}`}
       </div>
