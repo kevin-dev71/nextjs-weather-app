@@ -2,7 +2,6 @@
   display: flex;
   gap: 6px;
   width: 100%;
-  margin: 24px 0;
 
   .item {
     flex: 1;
@@ -16,20 +15,12 @@
   }
 
   .active {
-    position: relative;
     font-weight: var(--font-medium);
     color: var(--text-color);
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 5px;
-      left: 50%;
-      transform: translateX(-200%);
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--text-color);
+    span {
+      border-bottom: 2px solid var(--text-color);
+      width: fit-content;
     }
   }
 }

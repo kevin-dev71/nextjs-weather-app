@@ -7,6 +7,9 @@ const nextConfig = {
     locales: ["en-US", "es-ES"],
     defaultLocale: "es-ES",
   },
+  images: {
+    domains: ["openweathermap.org"],
+  },
 };
 
 module.exports = nextConfig;

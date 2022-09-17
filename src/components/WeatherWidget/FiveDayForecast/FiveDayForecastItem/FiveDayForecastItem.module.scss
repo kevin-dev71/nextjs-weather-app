@@ -1,0 +1,73 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  font-size: calc(14rem / 16);
+
+  .hour {
+    flex: 1 1 15%;
+    color: var(--text-color-quinary);
+  }
+
+  .humidity {
+    flex: 1 1 10%;
+    color: var(--text-color-quaternary);
+    font-weight: var(--font-medium);
+
+    span {
+      vertical-align: middle;
+    }
+
+    svg {
+      fill: #4293eb;
+      transform: translateY(2px);
+    }
+  }
+
+  .wind {
+    flex: 1 1 15%;
+    color: var(--text-color-quaternary);
+    font-weight: var(--font-medium);
+
+    span {
+      vertical-align: middle;
+    }
+
+    svg {
+      fill: #4293eb;
+      transform: translateY(2px);
+    }
+  }
+
+  .weather {
+    flex: 1 1 35%;
+    display: flex;
+    align-items: center;
+    font-size: calc(12rem / 16);
+
+    .icon-wrapper {
+      position: relative;
+      width: 42px;
+      height: 42px;
+    }
+
+    span {
+      text-transform: capitalize;
+      color: var(--text-color-quinary);
+    }
+  }
+
+  .temperature {
+    flex: 1 1 10%;
+  }
+  .rain {
+    flex: 1 1 10%;
+    display: flex;
+    gap: 4px;
+
+    svg {
+      transform: translateY(2px);
+    }
+  }
+}

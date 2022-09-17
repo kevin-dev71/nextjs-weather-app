@@ -22,7 +22,7 @@ const ForecastTabs = ({ labels, selectedLabel, onSelect }: Props) => {
             tabIndex={0}
             onKeyPress={() => {}}
           >
-            {label}
+            <span>{label}</span>
           </div>
         );
       })}
