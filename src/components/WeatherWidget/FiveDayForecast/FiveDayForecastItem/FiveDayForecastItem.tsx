@@ -14,7 +14,6 @@ const FiveDayForecastItem = ({ item }: { item: ForecastListItem }) => {
   const { humidity, temp } = main;
   const { icon, description } = weather[0];
   const { hour } = getDateFromDateTime(dt);
-  console.log(item);
 
   return (
     <div className={styles.wrapper}>
