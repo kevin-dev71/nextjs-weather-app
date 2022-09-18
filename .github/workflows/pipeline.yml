@@ -46,7 +46,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build the nextjs-weather-app Docker image
+        env:
+          OPENWEATHER_API_BASE_URL: http://api.openweathermap.org
+          NEXT_PUBLIC_DEFAULT_CITY: "santiago de chile"
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
         run: |
           docker build -f Dockerfile.production -t ghcr.io/kevin-dev71/nextjs-weather-app:latest .
-          docker run -p 3000:3000 --env-file .env.local ghcr.io/kevin-dev71/nextjs-weather-app
+          docker run ghcr.io/kevin-dev71/nextjs-weather-app
           docker push ghcr.io/jonashackt/hello-world:latest

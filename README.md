@@ -62,6 +62,10 @@ ANALYZE=true yarn build
 ```bash
 # Run
 docker-compose -f docker-compose.production.yml --env-file .env.local up --build
+# or
+docker build -f Dockerfile.production -t nextjs-weather-app:latest .
+&&
+docker run -p 3000:3000 --env-file .env.local nextjs-weather-app
 ```
 
 Open http://localhost:3000 with your browser to see the result.
