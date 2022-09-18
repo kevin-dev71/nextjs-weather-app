@@ -52,5 +52,4 @@ jobs:
           OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
         run: |
           docker build -f Dockerfile.production -t ghcr.io/kevin-dev71/nextjs-weather-app:latest .
-          docker run ghcr.io/kevin-dev71/nextjs-weather-app
           docker push ghcr.io/jonashackt/hello-world:latest
