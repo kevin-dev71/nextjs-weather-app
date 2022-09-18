@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   gap: 32px;
-  max-width: 750px;
+  max-width: 35vw;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 20px;
@@ -37,6 +37,29 @@
       font-size: calc(12rem / 16);
       font-weight: var(--font-medium);
       text-align: center;
+    }
+  }
+
+  @media (max-width: 1580px) {
+    max-width: 50vw;
+  }
+
+  @media (max-width: 1080px) {
+    max-width: 85vw;
+  }
+
+  @media (max-width: 680px) {
+    .favorite__item {
+      max-width: 100px;
+
+      .img-wrapper {
+        width: 100px;
+        height: 100px;
+      }
+
+      footer {
+        font-size: calc(10rem / 16);
+      }
     }
   }
 }

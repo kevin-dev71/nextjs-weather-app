@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import useCityStore from "@/src/hooks/useCityStore";
 import useLocale, { LocalesObjKey, OPENWEATHER_LANG_MAP } from "@/src/hooks/useLocale";
+import { CITY_STATE_STATUS } from "@/src/redux/slices/city.slice";
 import { fetch5daysForecast } from "@/src/services/city.service";
 import type { AdaptedForecast5ApiResponse } from "@/src/ts/interfaces";
 
@@ -12,7 +13,7 @@ import { adaptFiveDaysForecastApiRes, getFirstKeyOf } from "./helpers";
 import styles from "./FiveDayForecast.module.scss";
 
 const FiveDayForecast = () => {
-  const { geoInfo } = useCityStore();
+  const { geoInfo, city } = useCityStore();
   const { locale } = useLocale();
   // local states
   const [forecastList, setForecastList] = useState<AdaptedForecast5ApiResponse | null>(null);
@@ -31,6 +32,9 @@ const FiveDayForecast = () => {
       setSelectedTabLabel(getFirstKeyOf(adaptedForecasts));
     });
   }, [geoInfo, lang]);
+
+  if (city.status === CITY_STATE_STATUS.LOADING)
+    return <div className={styles.wrapper}>Loading...</div>;
 
   if (!forecastList) return null;
 

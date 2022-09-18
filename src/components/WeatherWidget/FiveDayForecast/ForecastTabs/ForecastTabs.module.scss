@@ -6,8 +6,10 @@
   .item {
     flex: 1;
     padding: 12px 0;
+    font-size: calc(12rem / 16);
     color: var(--text-color-quaternary);
     cursor: pointer;
+    text-align: center;
 
     &:hover {
       font-weight: var(--font-medium);

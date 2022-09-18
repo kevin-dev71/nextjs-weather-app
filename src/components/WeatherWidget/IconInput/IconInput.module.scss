@@ -38,4 +38,10 @@
     //   box-shadow: 0 0 0 2px rgba(189, 196, 208, 0.8);
     // }
   }
+
+  @media (max-width: 1580px) {
+    .text-input {
+      height: calc(24rem / 16);
+    }
+  }
 }

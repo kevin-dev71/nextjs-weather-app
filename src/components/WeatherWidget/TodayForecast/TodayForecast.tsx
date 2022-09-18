@@ -3,6 +3,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import useCityStore from "@/src/hooks/useCityStore";
 import useLocale, { LocalesObjKey, OPENWEATHER_LANG_MAP } from "@/src/hooks/useLocale";
+import { CITY_STATE_STATUS } from "@/src/redux/slices/city.slice";
 import { fetchWeatherByCoords } from "@/src/services/city.service";
 import { GeocodingApiResponse, WeatherByCityApiResponse } from "@/src/ts/interfaces";
 import { getDateFromDateTime } from "@/src/utils/getDateFromDatetime";
@@ -32,6 +33,8 @@ const TodayForecast = () => {
       setWeatherStats(res);
     });
   }, [city.geoInfo, lang]);
+
+  if (city.status === CITY_STATE_STATUS.LOADING) return <div>Loading...</div>;
 
   if (!weatherStats) return null;
 

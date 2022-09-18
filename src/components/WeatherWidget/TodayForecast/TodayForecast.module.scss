@@ -116,4 +116,14 @@
       }
     }
   }
+
+  @media (max-width: 1580px) {
+    .forecast__content {
+      .forecast__body {
+        &-city {
+          font-size: calc(32rem / 16);
+        }
+      }
+    }
+  }
 }

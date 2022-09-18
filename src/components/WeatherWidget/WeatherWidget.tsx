@@ -1,9 +1,12 @@
+import { useState } from "react";
 import dynamic from "next/dynamic";
 
 import useLocale from "@/src/hooks/useLocale";
+import { classnames } from "@/src/utils/classnames";
 
 import styles from "./WeatherWidget.module.scss";
 
+// TODO: get Props of dynamic component
 const SearchBar = dynamic<any>(
   () =>
     import("@/src/components/WeatherWidget/SearchBar").then(
@@ -14,6 +17,7 @@ const SearchBar = dynamic<any>(
   }
 );
 
+// TODO: get Props of dynamic component
 const FavoriteCities = dynamic<any>(
   () =>
     import("@/src/components/WeatherWidget/FavoriteCities").then(
@@ -56,18 +60,23 @@ const FiveDayForecast = dynamic<any>(
 
 const WeatherWidget = () => {
   const { t } = useLocale();
+  const [showForecast, setShowForecast] = useState(false);
+
+  const handleShowForecast = () => {
+    setShowForecast(!showForecast);
+  };
 
   return (
     <main className={styles.wrapper}>
       <section className={styles.container}>
-        <div className={styles.forecast}>
+        <div className={classnames(styles.forecast, showForecast ? styles.visible : "")}>
           <SearchBar />
           <h1>{t("weather-forecast-title")}</h1>
           <FavoriteCities />
           <FiveDayForecast />
         </div>
         <div className={styles.today}>
-          <LanguageSelector />
+          <LanguageSelector {...{ handleShowForecast, showForecast }} />
           <TodayForecast />
         </div>
       </section>
