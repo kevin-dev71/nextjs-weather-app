@@ -4,10 +4,6 @@ on:
     branches:
       - main
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   deploy:
     runs-on: ubuntu-22.04
@@ -36,7 +32,21 @@ jobs:
         uses: borales/actions-yarn@v3.0.0
         with:
           cmd: lint # will run `yarn lint` command
+
       - name: Run Test
         uses: borales/actions-yarn@v3.0.0
         with:
           cmd: test:ci # will run `yarn test:ci` command
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build the nextjs-weather-app Docker image
+        run: |
+          docker build -f Dockerfile.production -t ghcr.io/kevin-dev71/nextjs-weather-app:latest .
+          docker run -p 3000:3000 --env-file .env.local ghcr.io/kevin-dev71/nextjs-weather-app
+          docker push ghcr.io/jonashackt/hello-world:latest
