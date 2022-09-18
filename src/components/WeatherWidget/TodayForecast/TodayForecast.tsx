@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import useCityStore from "@/src/hooks/useCityStore";
@@ -97,7 +98,12 @@ const TodayForecast = () => {
       <div className={styles.forecast__content}>
         <div className={styles.forecast__header}>
           <div className={styles["forecast__header-img"]}>
-            <img src={getOpenWeatherIconUrlByIconId(weather[0].icon)} alt="icon" />
+            <Image
+              width={80}
+              height={80}
+              src={getOpenWeatherIconUrlByIconId(weather[0].icon)}
+              alt="icon"
+            />
           </div>
           <div className={styles["forecast__header-body"]}>
             <span className={styles["forecast__header-body--title"]}>{t("today")}</span>
