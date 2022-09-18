@@ -21,7 +21,7 @@ const IconInput = dynamic<any>(
   }
 );
 
-const SearchBar = () => {
+const SearchBar = ({ onSubmit }: { onSubmit: () => void }) => {
   const searchBoxRef = useRef(null);
   const scrollRef = useRef(null);
   const { t } = useLocale();
@@ -43,6 +43,7 @@ const SearchBar = () => {
   function handleSelection(geoCity: GeocodingApiResponse) {
     return () => {
       setGeoInfo(geoCity);
+      onSubmit();
       handleOnBlur();
     };
   }

@@ -70,7 +70,7 @@ const WeatherWidget = () => {
     <main className={styles.wrapper}>
       <section className={styles.container}>
         <div className={classnames(styles.forecast, showForecast ? styles.visible : "")}>
-          <SearchBar />
+          <SearchBar onSubmit={() => setShowForecast(false)} />
           <h1>{t("weather-forecast-title")}</h1>
           <FavoriteCities />
           <FiveDayForecast />
