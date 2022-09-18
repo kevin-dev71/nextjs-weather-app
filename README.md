@@ -66,6 +66,9 @@ docker-compose -f docker-compose.production.yml --env-file .env.local up --build
 docker build -f Dockerfile.production -t nextjs-weather-app:latest .
 &&
 docker run -p 3000:3000 --env-file .env.local nextjs-weather-app
+# or
+docker pull ghcr.io/kevin-dev71/nextjs-weather-app:latest
+docker run -p 3000:3000 --env-file .env.local nextjs-weather-app
 ```
 
 Open http://localhost:3000 with your browser to see the result.
