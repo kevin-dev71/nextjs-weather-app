@@ -16,6 +16,7 @@
     "pre-commit": "lint-staged"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^12.3.0",
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "next": "12.3.0",

@@ -50,6 +50,13 @@ npm run test
 yarn test
 ```
 
+## Check Nextjs Bundlers with `@next/bundle-analyzer`
+
+```bash
+# Run
+ANALYZE=true yarn build
+```
+
 ## Docker Production Build
 
 ```bash
@@ -62,3 +69,14 @@ Open http://localhost:3000 with your browser to see the result.
 ## Design Inspiration
 
 [dribble](https://dribbble.com/shots/7177589-Dashboard-Weather-App/attachments/178655?mode=media)
+
+## Built With
+
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
