@@ -33,7 +33,7 @@
     place-content: revert;
 
     .container {
-      width: 100vw;
+      width: 100%;
       border-radius: revert;
     }
   }
@@ -42,7 +42,7 @@
     .container {
       .forecast {
         position: absolute;
-        width: 100vw;
+        width: 100%;
         transform: translateX(-100%);
       }
       .visible {
